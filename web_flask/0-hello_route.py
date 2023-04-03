@@ -2,7 +2,7 @@
 """
 script that starts a Flask web application with an route /
 """
-from Flask import Flask
+from flask import Flask
 
 
 app = Flask(__name__)
