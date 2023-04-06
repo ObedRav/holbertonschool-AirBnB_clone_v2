@@ -20,20 +20,21 @@ class State(BaseModel, Base):
     """
     storage = getenv("HBNB_TYPE_STORAGE")
 
+    if storage is None:
+        storage = "fs"
+
     __tablename__ = "states"
     name = Column(String(128), nullable=False)
-    cities = relationship('City', backref='state', cascade='all, delete')
 
     if storage == 'fs':
+        name = ""
+        cities = []
+
         @property
         def cities(self):
             """Returning the cities in the current state"""
             from models import storage
-            city_list = []
-            for city in list(storage.all().values()):
-                if city.state_id == self.id:
-                    city_list.append(city)
-            return city_list
+            return storage.all('State')
 
     if storage == 'db':
         cities = relationship('City', backref='state', cascade='all, delete')
