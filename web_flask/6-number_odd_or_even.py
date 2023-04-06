@@ -49,7 +49,7 @@ def render_is_number(n):
 def render_is_odd(n):
     what_is = None
 
-    if n%2 == 0:
+    if n % 2 == 0:
         what_is = "even"
     else:
         what_is = "odd"
