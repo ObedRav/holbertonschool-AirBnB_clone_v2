@@ -34,7 +34,11 @@ class State(BaseModel, Base):
         def cities(self):
             """Returning the cities in the current state"""
             from models import storage
-            return storage.all('State')
+            city_list = []
+            for city in list(storage.all('City')):
+                if city.state_id == self.id:
+                    city_list.append(city)
+            return city_list
 
     if storage == 'db':
         cities = relationship('City', backref='state', cascade='all, delete')
