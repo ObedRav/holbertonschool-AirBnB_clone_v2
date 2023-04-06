@@ -61,7 +61,7 @@ class Place(BaseModel, Base):
     if storage == "db":
         reviews = relationship("Review", backref="place", cascade="delete")
         amenities = relationship("Amenity", secondary="place_amenity",
-                                 viewonly=False)
+                                 viewonly=False, overlaps="place_amenities")
 
     if storage == "fs":
 
