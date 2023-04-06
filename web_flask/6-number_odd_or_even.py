@@ -54,7 +54,7 @@ def render_is_odd(n):
     else:
         what_is = "odd"
 
-    return render_template('5-number.html', n=n, type_data=what_is)
+    return render_template('6-number.html', n=n, type_data=what_is)
 
 
 if __name__ == '__main__':
