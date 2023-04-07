@@ -45,8 +45,8 @@
 			</section>
 			<section class="places">
 				<h1>Places</h1>
+                {% for place in places|sort(attribute="name") %}
 				<article>
-                    {% for place in places|sort(attribute="name") %}
 					<div class="headline">
 						<h2>{{place.name}}</h2>
 						<div class="price_by_night">${{place.price_by_night}}</div>
@@ -65,12 +65,12 @@
 							<p>{{place.number_bathrooms}} Bathroom</p>
 						</div>
 					</div>
-					<div class="user"><b>Owner</b>: {{place.user_id.name}}</div>
+					<div class="user"><b>Owner</b>: {{place.user.first_name}} {{place.user.last_name}}</div>
 					<div class="description">
-                        {{place.description}}
+                        {{place.description|safe}}
                     </div>
-                    {% endfor %}
 				</article>
+                {% endfor %}
 			</section>
 		</div>
 		<footer>

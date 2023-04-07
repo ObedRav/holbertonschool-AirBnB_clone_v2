@@ -59,7 +59,7 @@ article {
 	border-top: 1px solid #DDDDDD;
 	border-bottom: 1px solid #DDDDDD;
 
-	padding-top: 5px;
+	padding-top: 10px;
 	padding-bottom: 12px;
 	margin-top: 10px;
 	margin-bottom: 20px;
@@ -94,8 +94,13 @@ h1 {
 
 article h2 {
 	font-size: 30px;
-	margin: 10px auto;
+	margin-right: 90px;
 	padding: 0px;
+	text-align: left;
+	text-size-adjust: auto;
+	word-wrap: normal;
+	overflow: scroll;
+	text-overflow: clip;
 }
 
 .guest_icon {
