@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """
 Module Name:
-1-hbnb_route
+10-hbnb_filters
 
 Module Description:
 This module contains the routers
@@ -16,15 +16,25 @@ from models import storage
 
 app = Flask(__name__)
 
+
 @app.route('/hbnb_filters')
 def states_list():
+    """
+    This endpoint renders an HTML page that displays a list of
+    states and amenities retrieved from a database.
+    """
     states = storage.all(State).values()
     amenities = storage.all(Amenity).values()
-    return render_template('10-hbnb_filters.html', states=states, amenities=amenities)
+    return render_template(
+        '10-hbnb_filters.html',
+        states=states,
+        amenities=amenities
+    )
 
 
 @app.teardown_appcontext
 def tear(self):
+    """Tear"""
     storage.close()
 
 
