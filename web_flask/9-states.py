@@ -16,10 +16,22 @@ from models import storage
 app = Flask(__name__)
 
 
-@app.route('/states_list')
+@app.route('/states', strict_slashes=False)
 def states_list():
     states = storage.all(State).values()
     return render_template('7-states_list.html', states=states)
+
+@app.route('/states/<id>', strict_slashes=False)
+def states_list_id(id):
+    states = storage.all(State).values()
+
+    state = None
+
+    for current_state in states:
+        if current_state.id == id:
+            state = current_state
+
+    return render_template('9-states.html', state=state)
 
 
 @app.teardown_appcontext

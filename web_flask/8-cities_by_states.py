@@ -10,20 +10,21 @@ Module Attributes:
 - None
 """
 from flask import Flask, render_template
-import models
+from models.state import State
+from models import storage
 
 app = Flask(__name__)
 
 
 @app.route('/cities_by_states', strict_slashes=False)
 def states_list():
-    states = models.storage.all(models.State).values()
+    states = storage.all(State).values()
     return render_template('8-cities_by_states.html', states=states)
 
 
 @app.teardown_appcontext
 def tear(self):
-    models.storage.close()
+    storage.close()
 
 
 if __name__ == '__main__':
